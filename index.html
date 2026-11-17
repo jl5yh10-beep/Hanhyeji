@@ -1,0 +1,2452 @@
+<!doctype html>
+<html lang="ko">
+<head>
+      --normal-bg: #EBF7F2;
+      --normal-border: #B5DDD0;
+      --normal-text: #16654E;
+
+      --observe-bg: #EDF4FC;
+      --observe-border: #B8D4F4;
+      --observe-text: #1D4ED8;
+
+      --caution-bg: #FEF7E7;
+      --caution-border: #EDD08C;
+      --caution-text: #B7791F;
+
+      --danger-bg: #FDF0EE;
+      --danger-border: #EEB7B0;
+      --danger-text: #C0392B;
+      --danger-screen: #C0392B;
+      --danger-screen-deep: #96281E;
+
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --radius-sm: 10px;
+      --shadow-card: 0 2px 12px rgba(22, 48, 43, 0.05);
+      --transition-smooth: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: 'Pretendard', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+      min-height: 100dvh;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+      font-family: 'SF Mono', 'Roboto Mono', 'Consolas', ui-monospace, monospace;
+    }
+
+    button, input, a {
+      font-family: inherit;
+    }
+
+    button:focus-visible,
+    input:focus-visible,
+    a:focus-visible {
+      outline: 3px solid var(--primary);
+      outline-offset: 2px;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 52px;
+      padding: 12px 22px;
+      border-radius: var(--radius-md);
+      border: 1px solid transparent;
+      font-size: 1.05rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      white-space: nowrap;
+      touch-action: manipulation;
+      transition: transform 0.14s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn:active {
+      transform: scale(0.98);
+    }
+
+    .btn-primary {
+      background-color: var(--primary);
+      color: #FFFFFF;
+      box-shadow: 0 4px 14px rgba(29, 122, 95, 0.22);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--primary-hover);
+    }
+
+    .btn-secondary {
+      background-color: var(--surface);
+      color: var(--text);
+      border-color: var(--border);
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--surface-subtle);
+      border-color: #B8CBC2;
+    }
+
+    .btn-soft {
+      background-color: var(--primary-soft);
+      color: var(--primary);
+      border-color: #CBE5DC;
+    }
+
+    .btn-soft:hover {
+      background-color: #DCEEE8;
+    }
+
+    .btn-caution {
+      background-color: var(--caution-text);
+      color: #FFFFFF;
+    }
+
+    .btn-caution:hover {
+      background-color: #9C6518;
+    }
+
+    .btn-danger-outline {
+      background-color: #FFFFFF;
+      color: var(--danger-text);
+      border-color: #E7C2BC;
+      min-height: 48px;
+      padding: 10px 16px;
+      font-size: 0.95rem;
+    }
+
+    .btn-danger-outline:hover {
+      background-color: var(--danger-bg);
+      border-color: var(--danger-border);
+    }
+
+    .btn-sm {
+      min-height: 48px;
+      padding: 10px 16px;
+      font-size: 0.95rem;
+    }
+
+    /* Welcome / Permission Gate Screen */
+    .start-screen {
+      min-height: 100dvh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 16px;
+    }
+
+    .start-card {
+      width: 100%;
+      max-width: 540px;
+      background-color: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 36px 28px;
+      box-shadow: var(--shadow-card);
+    }
+
+    .brand-mark {
+      width: 64px;
+      height: 64px;
+      border-radius: 18px;
+      background-color: var(--primary-soft);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .start-title {
+      font-size: clamp(1.85rem, 4vw, 2.25rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      line-height: 1.25;
+      margin-bottom: 10px;
+    }
+
+    .start-subtitle {
+      font-size: 1.0625rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 26px;
+    }
+
+    .guide-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 28px;
+      padding: 20px;
+      background-color: var(--surface-subtle);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+    }
+
+    .guide-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.98rem;
+      color: var(--text);
+    }
+
+    .guide-num {
+      flex-shrink: 0;
+      width: 26px;
+      height: 26px;
+      border-radius: 8px;
+      background-color: var(--primary);
+      color: #FFFFFF;
+      font-size: 0.85rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+    }
+
+    .start-btn {
+      width: 100%;
+      min-height: 60px;
+      font-size: 1.2rem;
+      border-radius: 16px;
+    }
+
+    .env-warning-box {
+      margin-top: 16px;
+      padding: 16px;
+      border-radius: var(--radius-md);
+      background-color: var(--observe-bg);
+      border: 1px solid var(--observe-border);
+      color: var(--text);
+      font-size: 0.94rem;
+      line-height: 1.55;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .env-warning-title {
+      font-weight: 800;
+      color: var(--observe-text);
+    }
+
+    .permission-box {
+      margin-top: 20px;
+      padding: 18px;
+      border-radius: var(--radius-md);
+      background-color: var(--caution-bg);
+      border: 1px solid var(--caution-border);
+      color: var(--text);
+    }
+
+    .permission-box-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--caution-text);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .permission-box p,
+    .permission-box li {
+      font-size: 0.94rem;
+      color: var(--text);
+      line-height: 1.55;
+    }
+
+    .permission-box ul {
+      margin: 10px 0 14px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .permission-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    /* Dashboard App Shell */
+    .app-shell {
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      padding-top: env(safe-area-inset-top);
+      background-color: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .topbar-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .topbar-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .topbar-logo {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background-color: var(--primary);
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .topbar-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--text);
+      white-space: nowrap;
+    }
+
+    .topbar-mode {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .stop-btn {
+      min-height: 48px;
+      padding: 10px 18px;
+      font-size: 0.95rem;
+      flex-shrink: 0;
+    }
+
+    .main-container {
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 20px 16px calc(40px + env(safe-area-inset-bottom));
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* Notice Banner for Sensorless PC */
+    .device-notice {
+      background-color: #FFFFFF;
+      border: 1px solid var(--caution-border);
+      background-color: var(--caution-bg);
+      border-radius: var(--radius-lg);
+      padding: 18px 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .device-notice-icon {
+      color: var(--caution-text);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .device-notice-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--caution-text);
+      margin-bottom: 4px;
+    }
+
+    .device-notice-desc {
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+
+    /* Big Status Card */
+    .status-card {
+      border-radius: 24px;
+      padding: 26px 24px;
+      border: 2px solid var(--normal-border);
+      background-color: var(--normal-bg);
+      box-shadow: var(--shadow-card);
+      transition: background-color var(--transition-smooth), border-color var(--transition-smooth), color var(--transition-smooth);
+    }
+
+    .status-card[data-state="NORMAL"] {
+      background-color: var(--normal-bg);
+      border-color: var(--normal-border);
+    }
+
+    .status-card[data-state="IMPACT_OBSERVE"] {
+      background-color: var(--observe-bg);
+      border-color: var(--observe-border);
+    }
+
+    .status-card[data-state="CAUTION"] {
+      background-color: var(--caution-bg);
+      border-color: var(--caution-border);
+    }
+
+    .status-card[data-state="DANGER"] {
+      background-color: var(--danger-bg);
+      border-color: var(--danger-border);
+    }
+
+    .status-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .status-main {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .status-icon-wrap {
+      width: 64px;
+      height: 64px;
+      border-radius: 18px;
+      background-color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      transition: color var(--transition-smooth);
+    }
+
+    .status-card[data-state="NORMAL"] .status-icon-wrap,
+    .status-card[data-state="NORMAL"] .status-label {
+      color: var(--normal-text);
+    }
+
+    .status-card[data-state="IMPACT_OBSERVE"] .status-icon-wrap,
+    .status-card[data-state="IMPACT_OBSERVE"] .status-label {
+      color: var(--observe-text);
+    }
+
+    .status-card[data-state="CAUTION"] .status-icon-wrap,
+    .status-card[data-state="CAUTION"] .status-label {
+      color: var(--caution-text);
+    }
+
+    .status-card[data-state="DANGER"] .status-icon-wrap,
+    .status-card[data-state="DANGER"] .status-label {
+      color: var(--danger-text);
+    }
+
+    .status-kicker {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 2px;
+    }
+
+    .status-label {
+      font-size: clamp(1.6rem, 3.5vw, 2.15rem);
+      font-weight: 800;
+      line-height: 1.2;
+      transition: color var(--transition-smooth);
+    }
+
+    .status-message {
+      margin-top: 14px;
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .observe-progress-wrap {
+      margin-top: 16px;
+    }
+
+    .observe-progress-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--observe-text);
+      margin-bottom: 8px;
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 10px;
+      background-color: rgba(255, 255, 255, 0.85);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background-color: var(--observe-text);
+      transition: width 0.08s linear;
+    }
+
+    /* Dashboard Grid */
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    @media (min-width: 920px) {
+      .dashboard-grid {
+        grid-template-columns: 1.15fr 0.85fr;
+      }
+    }
+
+    .col-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* Cards */
+    .card {
+      background-color: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 22px;
+      box-shadow: var(--shadow-card);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .card-title {
+      font-size: 1.18rem;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .card-subtitle {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    /* Telemetry Grid */
+    .mag-hero {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 16px 18px;
+      background-color: var(--surface-subtle);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      margin-bottom: 14px;
+    }
+
+    .mag-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+
+    .mag-value-wrap {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+
+    .mag-value {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--text);
+      line-height: 1.1;
+    }
+
+    .mag-unit {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+
+    .axes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .axis-box {
+      padding: 12px 10px;
+      background-color: var(--surface-subtle);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      text-align: center;
+    }
+
+    .axis-name {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .axis-val {
+      font-size: 1.12rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    /* Canvas Chart */
+    .chart-wrap {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      background-color: #FCFDFC;
+      padding: 12px 12px 8px;
+    }
+
+    .chart-legend {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 8px;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .chart-canvas {
+      width: 100%;
+      height: 165px;
+      display: block;
+    }
+
+    /* Test Mode */
+    .test-actions {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    @media (min-width: 520px) {
+      .test-actions {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .test-btn {
+      width: 100%;
+      min-height: 54px;
+      white-space: normal;
+      text-align: center;
+      line-height: 1.3;
+      padding: 12px 14px;
+      font-size: 0.98rem;
+    }
+
+    .sim-status {
+      margin-top: 12px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    /* Settings */
+    .setting-group {
+      padding: 14px 0;
+      border-bottom: 1px solid #ECF1EE;
+    }
+
+    .setting-group:first-of-type {
+      padding-top: 0;
+    }
+
+    .setting-group:last-of-type {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .setting-label-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .setting-label {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .setting-val {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .range-input {
+      width: 100%;
+      height: 36px;
+      appearance: none;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .range-input::-webkit-slider-runnable-track {
+      height: 8px;
+      border-radius: 999px;
+      background: #DCE5E0;
+    }
+
+    .range-input::-webkit-slider-thumb {
+      appearance: none;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--primary);
+      border: 3px solid #FFFFFF;
+      box-shadow: 0 2px 6px rgba(22, 48, 43, 0.25);
+      margin-top: -10px;
+    }
+
+    .range-input::-moz-range-track {
+      height: 8px;
+      border-radius: 999px;
+      background: #DCE5E0;
+    }
+
+    .range-input::-moz-range-thumb {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--primary);
+      border: 3px solid #FFFFFF;
+      box-shadow: 0 2px 6px rgba(22, 48, 43, 0.25);
+    }
+
+    .range-hints {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .phone-row {
+      display: flex;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .text-input {
+      flex: 1;
+      min-width: 0;
+      min-height: 48px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-size: 1.05rem;
+      color: var(--text);
+      background-color: var(--surface-subtle);
+    }
+
+    .text-input:focus {
+      background-color: #FFFFFF;
+      border-color: var(--primary);
+    }
+
+    .save-feedback {
+      margin-top: 8px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--primary);
+      min-height: 1.3em;
+    }
+
+    /* History Card */
+    .history-list {
+      list-style: none;
+      max-height: 320px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .history-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 13px 4px;
+      border-bottom: 1px solid #ECF1EE;
+    }
+
+    .history-item:last-child {
+      border-bottom: none;
+    }
+
+    .history-left {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      min-width: 0;
+    }
+
+    .history-status {
+      font-size: 1rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .history-status.is-danger {
+      color: var(--danger-text);
+    }
+
+    .history-status.is-caution {
+      color: var(--caution-text);
+    }
+
+    .history-time {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+    }
+
+    .history-mag {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text);
+      white-space: nowrap;
+    }
+
+    .history-empty {
+      padding: 28px 12px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      background-color: var(--surface-subtle);
+      border-radius: var(--radius-md);
+      border: 1px dashed var(--border);
+    }
+
+    /* Full-Screen Red Danger Alert */
+    .danger-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: radial-gradient(circle at top center, #D64536 0%, var(--danger-screen) 48%, var(--danger-screen-deep) 100%);
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 18px;
+      animation: overlayFadeIn 0.25s ease-out;
+    }
+
+    @keyframes overlayFadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .danger-inner {
+      width: 100%;
+      max-width: 520px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .danger-icon-circle {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.18);
+      border: 2px solid rgba(255, 255, 255, 0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .danger-title {
+      font-size: clamp(2rem, 6vw, 2.75rem);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    .danger-desc {
+      font-size: 1.22rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.95);
+      line-height: 1.45;
+    }
+
+    .danger-countdown-box {
+      width: 100%;
+      padding: 16px 20px;
+      border-radius: 16px;
+      background-color: rgba(0, 0, 0, 0.22);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+    }
+
+    .danger-countdown-num {
+      font-size: 2.2rem;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 4px;
+    }
+
+    .danger-countdown-text {
+      font-size: 0.98rem;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .escalation-box {
+      width: 100%;
+      padding: 20px;
+      border-radius: 18px;
+      background-color: rgba(0, 0, 0, 0.28);
+      border: 2px solid #FDE047;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .escalation-text {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #FEF08A;
+      line-height: 1.35;
+    }
+
+    .btn-call-guardian {
+      width: 100%;
+      min-height: 68px;
+      background-color: #FEF08A;
+      color: #7C1D13;
+      font-size: 1.25rem;
+      font-weight: 900;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
+    }
+
+    .btn-call-guardian:hover {
+      background-color: #FDE047;
+    }
+
+    .btn-im-ok {
+      width: 100%;
+      min-height: 74px;
+      background-color: #FFFFFF;
+      color: var(--danger-screen);
+      font-size: 1.4rem;
+      font-weight: 900;
+      border-radius: 18px;
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.22);
+    }
+
+    .btn-im-ok:hover {
+      background-color: #F8FAFC;
+    }
+
+    .guardian-note {
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.88);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 1. Start / Permission Gate Screen -->
+  <section id="start-screen" class="start-screen" aria-label="시작 화면">
+    <div class="start-card">
+      <div class="brand-mark" aria-hidden="true">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          <path d="M8 12h2l1.5-3 2 6 1.5-3H17"/>
+        </svg>
+      </div>
+
+      <h1 class="start-title">낙상 알리미</h1>
+      <p class="start-subtitle">
+        혼자 계신 어르신이나 환자가 넘어졌을 때 스마트폰의 움직임 센서가 충격을 즉시 감지하고, 경고 알림과 함께 보호자에게 바로 연락할 수 있도록 돕습니다.
+      </p>
+
+      <ul class="guide-list">
+        <li class="guide-item">
+          <span class="guide-num">1</span>
+          <span><strong>실시간 충격 감지:</strong> 갑작스러운 큰 충격이 감지되면 설정한 대기 시간 동안 움직임을 살펴봅니다.</span>
+        </li>
+        <li class="guide-item">
+          <span class="guide-num">2</span>
+          <span><strong>낙상 위험 판별:</strong> 충격 후 움직임이 멈추면 즉시 화면 경고음과 진동을 울립니다.</span>
+        </li>
+        <li class="guide-item">
+          <span class="guide-num">3</span>
+          <span><strong>보호자 빠른 연결:</strong> 10초 동안 응답이 없으면 보호자 전화 연결 버튼을 표시합니다.</span>
+        </li>
+      </ul>
+
+      <button id="start-btn" type="button" class="btn btn-primary start-btn">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polygon points="6 3 20 12 6 21 6 3"/>
+        </svg>
+        측정 시작
+      </button>
+
+      <!-- Shown automatically only when running inside an iframe or insecure HTTP/file context -->
+      <div id="env-warning-box" class="env-warning-box hidden" role="status">
+        <div id="env-warning-title" class="env-warning-title">실제 센서 사용 안내</div>
+        <p id="env-warning-text"></p>
+        <a id="open-standalone-link" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-soft btn-sm hidden">
+          Safari 새 탭에서 직접 열기
+        </a>
+      </div>
+
+      <!-- Shown only when sensor permission is denied -->
+      <div id="permission-error-box" class="permission-box hidden" role="alert">
+        <div class="permission-box-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="8" x2="12" y2="12"/>
+            <line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+          <span>센서 사용을 허용해 주세요</span>
+        </div>
+        <p id="permission-error-text">가속도 센서 권한이 거부되어 실시간 측정을 시작할 수 없습니다. 아래 방법으로 권한을 허용해 주세요.</p>
+        <ul>
+          <li><strong>iPad / iPhone (Safari):</strong> HTTPS 주소의 단독 Safari 탭(미리보기 프레임 아님)에서 새로고침한 뒤 [측정 시작]을 눌러 '동작 및 방향' 접근을 허용하세요. 이미 거절한 경우 해당 Safari 탭을 닫고 새 탭에서 주소를 다시 열어 주세요.</li>
+          <li><strong>Android (Chrome):</strong> 주소창 왼쪽 설정 아이콘 &rarr; 권한 &rarr; '동작 센서'를 허용으로 바꾼 뒤 새로고침하세요.</li>
+        </ul>
+        <div class="permission-actions">
+          <button id="retry-permission-btn" type="button" class="btn btn-caution btn-sm">다시 시도</button>
+          <button id="enter-test-only-btn" type="button" class="btn btn-secondary btn-sm">테스트 모드로 확인</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Main Monitoring Dashboard -->
+  <div id="dashboard-screen" class="app-shell hidden">
+    <header class="topbar">
+      <div class="topbar-inner">
+        <div class="topbar-brand">
+          <div class="topbar-logo" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              <path d="M8 12h2l1.5-3 2 6 1.5-3H17"/>
+            </svg>
+          </div>
+          <div>
+            <div class="topbar-title">낙상 알리미</div>
+            <div id="mode-label" class="topbar-mode">센서 연결 확인 중...</div>
+          </div>
+        </div>
+
+        <button id="stop-btn" type="button" class="btn btn-danger-outline stop-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="6" y="6" width="12" height="12" rx="2"/>
+          </svg>
+          측정 중지
+        </button>
+      </div>
+    </header>
+
+    <main class="main-container">
+      <!-- Sensorless PC Notice -->
+      <div id="no-sensor-banner" class="device-notice hidden" role="status">
+        <div class="device-notice-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="8" x2="12" y2="12"/>
+            <line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+        </div>
+        <div>
+          <div id="no-sensor-title" class="device-notice-title">이 기기에는 센서가 없어요</div>
+          <p id="no-sensor-desc" class="device-notice-desc">PC나 가속도 센서가 없는 기기에서는 실시간 센서를 측정할 수 없어 <strong>테스트 모드</strong>만 사용할 수 있습니다. 아래 테스트 버튼을 눌러 낙상 감지 기능을 확인해 보세요.</p>
+        </div>
+      </div>
+
+      <!-- Top Large Status Card -->
+      <section id="status-card" class="status-card" data-state="NORMAL" aria-live="polite">
+        <div class="status-top">
+          <div class="status-main">
+            <div id="status-icon-wrap" class="status-icon-wrap" aria-hidden="true">
+              <!-- Icon updated dynamically -->
+            </div>
+            <div>
+              <div class="status-kicker">현재 감지 상태</div>
+              <div id="status-label" class="status-label">정상</div>
+            </div>
+          </div>
+
+          <button id="caution-ack-btn" type="button" class="btn btn-caution hidden">
+            괜찮습니다 (정상으로)
+          </button>
+        </div>
+
+        <p id="status-message" class="status-message">안전하게 이동 중입니다.</p>
+
+        <div id="observe-progress-wrap" class="observe-progress-wrap hidden">
+          <div class="observe-progress-meta">
+            <span>충격 후 움직임 확인 중</span>
+            <span id="observe-countdown" class="tabular-nums">3.0초 남음</span>
+          </div>
+          <div class="progress-track">
+            <div id="observe-progress-fill" class="progress-fill"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Two-Column Workspace -->
+      <div class="dashboard-grid">
+        <!-- Left Column: Live Sensor + Test Mode -->
+        <div class="col-stack">
+          <section class="card" aria-label="실시간 가속도 센서">
+            <div class="card-header">
+              <div>
+                <h2 class="card-title">실시간 가속도 센서</h2>
+                <p class="card-subtitle">중력 포함 가속도 (accelerationIncludingGravity)</p>
+              </div>
+            </div>
+
+            <div class="mag-hero">
+              <span class="mag-title">전체 가속도 크기 √(x²+y²+z²)</span>
+              <div class="mag-value-wrap">
+                <span id="val-mag" class="mag-value tabular-nums">9.80</span>
+                <span class="mag-unit">m/s²</span>
+              </div>
+            </div>
+
+            <div class="axes-grid">
+              <div class="axis-box">
+                <div class="axis-name">X축 (좌우)</div>
+                <div id="val-x" class="axis-val tabular-nums">0.00</div>
+              </div>
+              <div class="axis-box">
+                <div class="axis-name">Y축 (상하)</div>
+                <div id="val-y" class="axis-val tabular-nums">0.00</div>
+              </div>
+              <div class="axis-box">
+                <div class="axis-name">Z축 (앞뒤)</div>
+                <div id="val-z" class="axis-val tabular-nums">9.80</div>
+              </div>
+            </div>
+
+            <div class="chart-wrap">
+              <div class="chart-legend">
+                <span>실시간 크기 추이 (m/s²)</span>
+                <span id="chart-threshold-legend" class="tabular-nums">중력 9.8 · 충격 기준 25 m/s²</span>
+              </div>
+              <canvas id="sensor-chart" class="chart-canvas" aria-label="실시간 가속도 크기 그래프"></canvas>
+            </div>
+          </section>
+
+          <section class="card" aria-label="테스트 모드">
+            <div class="card-header">
+              <div>
+                <h2 class="card-title">테스트 모드</h2>
+                <p class="card-subtitle">가상 센서 값으로 낙상 판단 알고리즘을 바로 확인합니다</p>
+              </div>
+            </div>
+
+            <div class="test-actions">
+              <button id="sim-fall-btn" type="button" class="btn btn-primary test-btn">
+                넘어짐 흉내 내기
+              </button>
+              <button id="sim-shake-btn" type="button" class="btn btn-soft test-btn">
+                흔들고 다시 움직임 흉내 내기
+              </button>
+            </div>
+
+            <p id="sim-status" class="sim-status hidden" aria-live="polite"></p>
+          </section>
+        </div>
+
+        <!-- Right Column: Settings + History -->
+        <div class="col-stack">
+          <section class="card" aria-label="감지 설정">
+            <div class="card-header">
+              <div>
+                <h2 class="card-title">감지 및 연락 설정</h2>
+                <p class="card-subtitle">변경한 값은 기기에 자동 저장됩니다</p>
+              </div>
+            </div>
+
+            <div class="setting-group">
+              <div class="setting-label-row">
+                <label for="threshold-slider" class="setting-label">충격 기준값</label>
+                <span id="threshold-display" class="setting-val tabular-nums">25 m/s²</span>
+              </div>
+              <input id="threshold-slider" class="range-input" type="range" min="15" max="40" step="1" value="25" />
+              <div class="range-hints">
+                <span>15 m/s² (민감)</span>
+                <span>40 m/s² (강한 충격)</span>
+              </div>
+            </div>
+
+            <div class="setting-group">
+              <div class="setting-label-row">
+                <label for="wait-slider" class="setting-label">충격 후 대기 시간</label>
+                <span id="wait-display" class="setting-val tabular-nums">3초</span>
+              </div>
+              <input id="wait-slider" class="range-input" type="range" min="1" max="10" step="1" value="3" />
+              <div class="range-hints">
+                <span>1초</span>
+                <span>10초</span>
+              </div>
+            </div>
+
+            <div class="setting-group">
+              <label for="guardian-phone" class="setting-label">보호자 전화번호</label>
+              <div class="phone-row">
+                <input id="guardian-phone" class="text-input tabular-nums" type="tel" inputmode="tel" placeholder="예: 010-1234-5678" autocomplete="tel" />
+                <button id="save-phone-btn" type="button" class="btn btn-primary btn-sm">저장</button>
+              </div>
+              <div id="save-feedback" class="save-feedback" aria-live="polite"></div>
+            </div>
+          </section>
+
+          <section class="card" aria-label="감지 기록">
+            <div class="card-header">
+              <div>
+                <h2 class="card-title">감지 기록</h2>
+                <p class="card-subtitle">주의 및 위험 발생 내역 (최근 20개)</p>
+              </div>
+              <button id="clear-history-btn" type="button" class="btn btn-secondary btn-sm">
+                기록 지우기
+              </button>
+            </div>
+
+            <div id="history-empty" class="history-empty">
+              아직 감지된 주의·위험 기록이 없습니다.
+            </div>
+            <ul id="history-list" class="history-list hidden"></ul>
+          </section>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- 3. Full-Screen Emergency Danger Overlay -->
+  <section id="danger-overlay" class="danger-overlay hidden" role="alertdialog" aria-modal="true" aria-labelledby="danger-title">
+    <div class="danger-inner">
+      <div class="danger-icon-circle" aria-hidden="true">
+        <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+          <line x1="12" y1="9" x2="12" y2="13"/>
+          <line x1="12" y1="17" x2="12.01" y2="17"/>
+        </svg>
+      </div>
+
+      <h2 id="danger-title" class="danger-title">위험 · 낙상 의심</h2>
+      <p class="danger-desc">큰 충격 후 움직임이 감지되지 않았습니다.<br />지금 괜찮으신가요?</p>
+
+      <div id="danger-countdown-box" class="danger-countdown-box">
+        <div id="danger-countdown-num" class="danger-countdown-num tabular-nums">10초</div>
+        <div class="danger-countdown-text">10초 내에 응답이 없으면 보호자 연락 안내가 표시됩니다.</div>
+      </div>
+
+      <div id="escalation-box" class="escalation-box hidden">
+        <div class="escalation-text">응답이 없습니다. 보호자에게 연락하세요</div>
+        <a id="call-guardian-link" href="tel:119" class="btn btn-call-guardian">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+          <span id="call-guardian-label">보호자에게 전화</span>
+        </a>
+        <div id="guardian-missing-note" class="guardian-note hidden">
+          저장된 보호자 번호가 없어 119로 연결됩니다. 설정에서 보호자 번호를 입력해 주세요.
+        </div>
+      </div>
+
+      <button id="im-ok-btn" type="button" class="btn btn-im-ok">
+        괜찮아요
+      </button>
+    </div>
+  </section>
+
+  <script>
+    (function () {
+      'use strict';
+
+      // Generate PNG apple-touch-icon dynamically for iPad/iPhone "Add to Home Screen"
+      try {
+        var iconCanvas = document.createElement('canvas');
+        iconCanvas.width = 180;
+        iconCanvas.height = 180;
+        var ictx = iconCanvas.getContext('2d');
+        if (ictx) {
+          ictx.fillStyle = '#1D7A5F';
+          ictx.fillRect(0, 0, 180, 180);
+          ictx.strokeStyle = '#FFFFFF';
+          ictx.lineWidth = 10;
+          ictx.lineJoin = 'round';
+          ictx.lineCap = 'round';
+          ictx.beginPath();
+          ictx.moveTo(90, 34);
+          ictx.lineTo(42, 54);
+          ictx.lineTo(42, 88);
+          ictx.quadraticCurveTo(42, 128, 90, 146);
+          ictx.quadraticCurveTo(138, 128, 138, 88);
+          ictx.lineTo(138, 54);
+          ictx.closePath();
+          ictx.stroke();
+          ictx.beginPath();
+          ictx.moveTo(60, 92);
+          ictx.lineTo(75, 92);
+          ictx.lineTo(84, 72);
+          ictx.lineTo(96, 110);
+          ictx.lineTo(105, 92);
+          ictx.lineTo(120, 92);
+          ictx.stroke();
+          var touchIconLink = document.getElementById('apple-touch-icon');
+          if (touchIconLink) {
+            touchIconLink.setAttribute('href', iconCanvas.toDataURL('image/png'));
+          }
+        }
+      } catch (e) {
+        // Ignore icon generation fallback
+      }
+
+      var STORAGE_SETTINGS_KEY = 'fallAlert_settings_v1';
+      var STORAGE_HISTORY_KEY = 'fallAlert_history_v1';
+      var MAX_HISTORY = 20;
+      var MAX_GRAPH_POINTS = 120;
+      var UI_UPDATE_INTERVAL_MS = 50;
+
+      // Application State
+      var state = {
+        isRunning: false,
+        testOnlyMode: false,
+        hasHardwareSensor: false,
+        detectionState: 'NORMAL', // 'NORMAL' | 'IMPACT_OBSERVE' | 'CAUTION' | 'DANGER'
+        settings: {
+          threshold: 25,
+          waitSeconds: 3,
+          guardianPhone: ''
+        },
+        history: [],
+        sensor: { x: 0, y: 0, z: 9.8, mag: 9.8 },
+        graphSamples: []
+      };
+
+      // Runtime Timers & Algorithm Tracking
+      var motionListenerBound = false;
+      var sensorProbeTimer = null;
+      var simTimer = null;
+      var isSimulating = false;
+      var cautionResetTimer = null;
+      var dangerCountdownTimer = null;
+      var alarmInterval = null;
+      var vibrateInterval = null;
+      var audioCtx = null;
+      var wakeLockSentinel = null;
+      var lastUiRenderTime = 0;
+
+      var observeContext = {
+        startTime: 0,
+        peakMag: 0,
+        samples: [],
+        movementHits: 0,
+        lastMag: 9.8
+      };
+
+      // DOM Elements
+      var startScreen = document.getElementById('start-screen');
+      var dashboardScreen = document.getElementById('dashboard-screen');
+      var startBtn = document.getElementById('start-btn');
+      var envWarningBox = document.getElementById('env-warning-box');
+      var envWarningTitle = document.getElementById('env-warning-title');
+      var envWarningText = document.getElementById('env-warning-text');
+      var openStandaloneLink = document.getElementById('open-standalone-link');
+      var stopBtn = document.getElementById('stop-btn');
+      var permissionErrorBox = document.getElementById('permission-error-box');
+      var permissionErrorText = document.getElementById('permission-error-text');
+      var retryPermissionBtn = document.getElementById('retry-permission-btn');
+      var enterTestOnlyBtn = document.getElementById('enter-test-only-btn');
+
+      var modeLabel = document.getElementById('mode-label');
+      var noSensorBanner = document.getElementById('no-sensor-banner');
+      var noSensorTitle = document.getElementById('no-sensor-title');
+      var noSensorDesc = document.getElementById('no-sensor-desc');
+
+      var statusCard = document.getElementById('status-card');
+      var statusIconWrap = document.getElementById('status-icon-wrap');
+      var statusLabel = document.getElementById('status-label');
+      var statusMessage = document.getElementById('status-message');
+      var cautionAckBtn = document.getElementById('caution-ack-btn');
+      var observeProgressWrap = document.getElementById('observe-progress-wrap');
+      var observeCountdown = document.getElementById('observe-countdown');
+      var observeProgressFill = document.getElementById('observe-progress-fill');
+
+      var valMag = document.getElementById('val-mag');
+      var valX = document.getElementById('val-x');
+      var valY = document.getElementById('val-y');
+      var valZ = document.getElementById('val-z');
+      var chartThresholdLegend = document.getElementById('chart-threshold-legend');
+      var chartCanvas = document.getElementById('sensor-chart');
+
+      var simFallBtn = document.getElementById('sim-fall-btn');
+      var simShakeBtn = document.getElementById('sim-shake-btn');
+      var simStatus = document.getElementById('sim-status');
+
+      var thresholdSlider = document.getElementById('threshold-slider');
+      var thresholdDisplay = document.getElementById('threshold-display');
+      var waitSlider = document.getElementById('wait-slider');
+      var waitDisplay = document.getElementById('wait-display');
+      var guardianPhoneInput = document.getElementById('guardian-phone');
+      var savePhoneBtn = document.getElementById('save-phone-btn');
+      var saveFeedback = document.getElementById('save-feedback');
+
+      var historyList = document.getElementById('history-list');
+      var historyEmpty = document.getElementById('history-empty');
+      var clearHistoryBtn = document.getElementById('clear-history-btn');
+
+      var dangerOverlay = document.getElementById('danger-overlay');
+      var dangerCountdownBox = document.getElementById('danger-countdown-box');
+      var dangerCountdownNum = document.getElementById('danger-countdown-num');
+      var escalationBox = document.getElementById('escalation-box');
+      var callGuardianLink = document.getElementById('call-guardian-link');
+      var callGuardianLabel = document.getElementById('call-guardian-label');
+      var guardianMissingNote = document.getElementById('guardian-missing-note');
+      var imOkBtn = document.getElementById('im-ok-btn');
+
+      // SVG Icons for Status Card
+      var STATUS_ICONS = {
+        NORMAL: '<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>',
+        IMPACT_OBSERVE: '<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>',
+        CAUTION: '<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>',
+        DANGER: '<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>'
+      };
+
+      // ---------- Persistence ----------
+      function loadPersistedData() {
+        try {
+          var rawSettings = localStorage.getItem(STORAGE_SETTINGS_KEY);
+          if (rawSettings) {
+            var parsed = JSON.parse(rawSettings);
+            if (typeof parsed.threshold === 'number' && parsed.threshold >= 15 && parsed.threshold <= 40) {
+              state.settings.threshold = parsed.threshold;
+            }
+            if (typeof parsed.waitSeconds === 'number' && parsed.waitSeconds >= 1 && parsed.waitSeconds <= 10) {
+              state.settings.waitSeconds = parsed.waitSeconds;
+            }
+            if (typeof parsed.guardianPhone === 'string') {
+              state.settings.guardianPhone = parsed.guardianPhone;
+            }
+          }
+        } catch (e) {
+          // Ignore storage parse error
+        }
+
+        try {
+          var rawHistory = localStorage.getItem(STORAGE_HISTORY_KEY);
+          if (rawHistory) {
+            var parsedHist = JSON.parse(rawHistory);
+            if (Array.isArray(parsedHist)) {
+              state.history = parsedHist.slice(0, MAX_HISTORY);
+            }
+          }
+        } catch (e) {
+          state.history = [];
+        }
+      }
+
+      function saveSettings() {
+        try {
+          localStorage.setItem(STORAGE_SETTINGS_KEY, JSON.stringify(state.settings));
+        } catch (e) {
+          // Ignore quota error
+        }
+      }
+
+      function saveHistory() {
+        try {
+          localStorage.setItem(STORAGE_HISTORY_KEY, JSON.stringify(state.history.slice(0, MAX_HISTORY)));
+        } catch (e) {
+          // Ignore quota error
+        }
+      }
+
+      function addHistoryRecord(type, peakMag) {
+        var entry = {
+          id: Date.now() + Math.random(),
+          timestamp: Date.now(),
+          status: type, // 'CAUTION' | 'DANGER'
+          peakMag: Number(peakMag.toFixed(1))
+        };
+        state.history.unshift(entry);
+        if (state.history.length > MAX_HISTORY) {
+          state.history = state.history.slice(0, MAX_HISTORY);
+        }
+        saveHistory();
+        renderHistory();
+      }
+
+      function formatTime(ts) {
+        var d = new Date(ts);
+        var year = d.getFullYear();
+        var month = String(d.getMonth() + 1).padStart(2, '0');
+        var day = String(d.getDate()).padStart(2, '0');
+        var hour = String(d.getHours()).padStart(2, '0');
+        var min = String(d.getMinutes()).padStart(2, '0');
+        var sec = String(d.getSeconds()).padStart(2, '0');
+        return year + '.' + month + '.' + day + ' ' + hour + ':' + min + ':' + sec;
+      }
+
+      function renderHistory() {
+        if (state.history.length === 0) {
+          historyEmpty.classList.remove('hidden');
+          historyList.classList.add('hidden');
+          historyList.innerHTML = '';
+          return;
+        }
+
+        historyEmpty.classList.add('hidden');
+        historyList.classList.remove('hidden');
+
+        var html = '';
+        for (var i = 0; i < state.history.length; i++) {
+          var item = state.history[i];
+          var isDanger = item.status === 'DANGER';
+          var labelText = isDanger ? '위험 (낙상 의심)' : '주의 (큰 움직임)';
+          var cls = isDanger ? 'is-danger' : 'is-caution';
+          var iconSvg = isDanger
+            ? '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>'
+            : '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>';
+
+          html += '<li class="history-item">' +
+            '<div class="history-left">' +
+              '<span class="history-status ' + cls + '">' + iconSvg + '<span>' + labelText + '</span></span>' +
+              '<span class="history-time tabular-nums">' + formatTime(item.timestamp) + '</span>' +
+            '</div>' +
+            '<span class="history-mag tabular-nums">최대 ' + item.peakMag.toFixed(1) + ' m/s²</span>' +
+          '</li>';
+        }
+        historyList.innerHTML = html;
+      }
+
+      function syncSettingsUI() {
+        thresholdSlider.value = String(state.settings.threshold);
+        thresholdDisplay.textContent = state.settings.threshold + ' m/s²';
+        waitSlider.value = String(state.settings.waitSeconds);
+        waitDisplay.textContent = state.settings.waitSeconds + '초';
+        guardianPhoneInput.value = state.settings.guardianPhone;
+        chartThresholdLegend.textContent = '중력 9.8 · 충격 기준 ' + state.settings.threshold + ' m/s²';
+        drawChart();
+      }
+
+      // ---------- Web Audio API Emergency Tone ----------
+      function initAudio() {
+        try {
+          var AudioContextClass = window.AudioContext || window.webkitAudioContext;
+          if (!AudioContextClass) return;
+          if (!audioCtx) {
+            audioCtx = new AudioContextClass();
+          }
+          if (audioCtx.state === 'suspended') {
+            audioCtx.resume();
+          }
+          // Unlock iOS/Chrome audio pipeline silently on user gesture
+          var osc = audioCtx.createOscillator();
+          var gain = audioCtx.createGain();
+          gain.gain.value = 0.0001;
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start();
+          osc.stop(audioCtx.currentTime + 0.02);
+        } catch (e) {
+          // Audio unavailable
+        }
+      }
+
+      function playAlarmBeep() {
+        try {
+          if (!audioCtx) initAudio();
+          if (!audioCtx) return;
+          if (audioCtx.state === 'suspended') {
+            audioCtx.resume();
+          }
+
+          var now = audioCtx.currentTime;
+          var tones = [
+            { freq: 880, start: 0.0, dur: 0.18 },
+            { freq: 660, start: 0.22, dur: 0.18 },
+            { freq: 880, start: 0.44, dur: 0.24 }
+          ];
+
+          for (var i = 0; i < tones.length; i++) {
+            var t = tones[i];
+            var osc = audioCtx.createOscillator();
+            var gain = audioCtx.createGain();
+
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(t.freq, now + t.start);
+
+            gain.gain.setValueAtTime(0.001, now + t.start);
+            gain.gain.exponentialRampToValueAtTime(0.45, now + t.start + 0.02);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + t.start + t.dur);
+
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+
+            osc.start(now + t.start);
+            osc.stop(now + t.start + t.dur + 0.02);
+          }
+        } catch (e) {
+          // Ignore audio playback failure
+        }
+      }
+
+      function startAlarmAndVibration() {
+        stopAlarmAndVibration();
+        playAlarmBeep();
+        alarmInterval = setInterval(playAlarmBeep, 1100);
+
+        if ('vibrate' in navigator) {
+          try {
+            navigator.vibrate([450, 200, 450, 200, 600]);
+            vibrateInterval = setInterval(function () {
+              if ('vibrate' in navigator) {
+                navigator.vibrate([450, 200, 450, 200, 600]);
+              }
+            }, 2200);
+          } catch (e) {
+            // Ignore vibration error
+          }
+        }
+      }
+
+      function stopAlarmAndVibration() {
+        if (alarmInterval) {
+          clearInterval(alarmInterval);
+          alarmInterval = null;
+        }
+        if (vibrateInterval) {
+          clearInterval(vibrateInterval);
+          vibrateInterval = null;
+        }
+        if ('vibrate' in navigator) {
+          try {
+            navigator.vibrate(0);
+          } catch (e) {
+            // Ignore
+          }
+        }
+      }
+
+      // ---------- UI Status Rendering ----------
+      function setDetectionState(nextState, customMsg) {
+        state.detectionState = nextState;
+        statusCard.setAttribute('data-state', nextState);
+        statusIconWrap.innerHTML = STATUS_ICONS[nextState];
+
+        if (cautionResetTimer) {
+          clearTimeout(cautionResetTimer);
+          cautionResetTimer = null;
+        }
+
+        if (nextState === 'NORMAL') {
+          statusLabel.textContent = '정상';
+          statusMessage.textContent = customMsg || '안전하게 이동 중입니다.';
+          cautionAckBtn.classList.add('hidden');
+          observeProgressWrap.classList.add('hidden');
+        } else if (nextState === 'IMPACT_OBSERVE') {
+          statusLabel.textContent = '충격 감지';
+          statusMessage.textContent = customMsg || '큰 충격이 감지되었습니다. ' + state.settings.waitSeconds + '초 동안 움직임을 확인합니다.';
+          cautionAckBtn.classList.add('hidden');
+          observeProgressWrap.classList.remove('hidden');
+        } else if (nextState === 'CAUTION') {
+          statusLabel.textContent = '주의';
+          statusMessage.textContent = customMsg || '큰 움직임이 감지되었습니다. 괜찮으신가요?';
+          cautionAckBtn.classList.remove('hidden');
+          observeProgressWrap.classList.add('hidden');
+
+          cautionResetTimer = setTimeout(function () {
+            if (state.isRunning && state.detectionState === 'CAUTION') {
+              setDetectionState('NORMAL');
+            }
+          }, 6500);
+        } else if (nextState === 'DANGER') {
+          statusLabel.textContent = '위험 (낙상 의심)';
+          statusMessage.textContent = customMsg || '충격 후 움직임이 없어 낙상으로 의심됩니다.';
+          cautionAckBtn.classList.add('hidden');
+          observeProgressWrap.classList.add('hidden');
+        }
+      }
+
+      // ---------- Danger Overlay & 10s Escalation ----------
+      function triggerDangerAlert() {
+        setDetectionState('DANGER');
+        startAlarmAndVibration();
+
+        // Prepare guardian call link
+        var rawPhone = (state.settings.guardianPhone || '').trim();
+        var cleanedDigits = rawPhone.replace(/[^0-9+]/g, '');
+
+        if (cleanedDigits.length > 0) {
+          callGuardianLink.setAttribute('href', 'tel:' + cleanedDigits);
+          callGuardianLabel.textContent = '보호자에게 전화 (' + rawPhone + ')';
+          guardianMissingNote.classList.add('hidden');
+        } else {
+          callGuardianLink.setAttribute('href', 'tel:119');
+          callGuardianLabel.textContent = '보호자에게 전화 (119 연결)';
+          guardianMissingNote.classList.remove('hidden');
+        }
+
+        // Reset 10-second escalation countdown
+        var remaining = 10;
+        dangerCountdownNum.textContent = remaining + '초';
+        dangerCountdownBox.classList.remove('hidden');
+        escalationBox.classList.add('hidden');
+        dangerOverlay.classList.remove('hidden');
+
+        if (dangerCountdownTimer) {
+          clearInterval(dangerCountdownTimer);
+        }
+
+        dangerCountdownTimer = setInterval(function () {
+          remaining -= 1;
+          if (remaining > 0) {
+            dangerCountdownNum.textContent = remaining + '초';
+          } else {
+            clearInterval(dangerCountdownTimer);
+            dangerCountdownTimer = null;
+            dangerCountdownBox.classList.add('hidden');
+            escalationBox.classList.remove('hidden');
+          }
+        }, 1000);
+      }
+
+      function dismissDangerAlert() {
+        if (dangerCountdownTimer) {
+          clearInterval(dangerCountdownTimer);
+          dangerCountdownTimer = null;
+        }
+        stopAlarmAndVibration();
+        dangerOverlay.classList.add('hidden');
+        stopSimulation();
+        setDetectionState('NORMAL');
+      }
+
+      // ---------- Fall Detection Algorithm ----------
+      function handleSensorSample(x, y, z) {
+        if (!state.isRunning) return;
+
+        var now = Date.now();
+        var mag = Math.sqrt(x * x + y * y + z * z);
+        state.sensor = { x: x, y: y, z: z, mag: mag };
+
+        // Throttle numeric DOM & chart redraw to ~20fps so 60Hz iPad sensors remain smooth & readable
+        if (now - lastUiRenderTime >= UI_UPDATE_INTERVAL_MS || mag >= state.settings.threshold) {
+          lastUiRenderTime = now;
+          valMag.textContent = mag.toFixed(2);
+          valX.textContent = x.toFixed(2);
+          valY.textContent = y.toFixed(2);
+          valZ.textContent = z.toFixed(2);
+
+          state.graphSamples.push({ mag: mag, state: state.detectionState });
+          if (state.graphSamples.length > MAX_GRAPH_POINTS) {
+            state.graphSamples.shift();
+          }
+          drawChart();
+        }
+
+        // Ignore algorithm transitions while Danger Alert is active
+        if (state.detectionState === 'DANGER') {
+          return;
+        }
+
+        var threshold = state.settings.threshold;
+        var waitMs = state.settings.waitSeconds * 1000;
+
+        if (state.detectionState === 'NORMAL' || state.detectionState === 'CAUTION') {
+          if (mag >= threshold) {
+            observeContext = {
+              startTime: now,
+              peakMag: mag,
+              samples: [],
+              movementHits: 0,
+              lastMag: mag
+            };
+            observeProgressFill.style.width = '0%';
+            observeCountdown.textContent = state.settings.waitSeconds.toFixed(1) + '초 남음';
+            setDetectionState('IMPACT_OBSERVE');
+          }
+        } else if (state.detectionState === 'IMPACT_OBSERVE') {
+          if (mag > observeContext.peakMag) {
+            observeContext.peakMag = mag;
+          }
+
+          var elapsed = now - observeContext.startTime;
+          var pct = Math.min(100, (elapsed / waitMs) * 100);
+          var remainSec = Math.max(0, (waitMs - elapsed) / 1000);
+          observeProgressFill.style.width = pct.toFixed(1) + '%';
+          observeCountdown.textContent = remainSec.toFixed(1) + '초 남음';
+
+          // Wait 450ms for initial impact shock to settle before evaluating recovery movement
+          if (elapsed >= 450) {
+            observeContext.samples.push(mag);
+            var devFromGravity = Math.abs(mag - 9.8);
+            var stepDelta = Math.abs(mag - observeContext.lastMag);
+            if (devFromGravity >= 2.2 || stepDelta >= 2.0) {
+              observeContext.movementHits += 1;
+            }
+          }
+          observeContext.lastMag = mag;
+
+          if (elapsed >= waitMs) {
+            evaluatePostImpactMovement();
+          }
+        }
+      }
+
+      function evaluatePostImpactMovement() {
+        var samples = observeContext.samples;
+        var count = samples.length;
+        var avgDev = 0;
+        var mean = 9.8;
+        var stdDev = 0;
+        var movementRatio = 0;
+
+        if (count > 0) {
+          var sum = 0;
+          var devSum = 0;
+          for (var i = 0; i < count; i++) {
+            sum += samples[i];
+            devSum += Math.abs(samples[i] - 9.8);
+          }
+          mean = sum / count;
+          avgDev = devSum / count;
+
+          var sqDiffSum = 0;
+          for (var j = 0; j < count; j++) {
+            var diff = samples[j] - mean;
+            sqDiffSum += diff * diff;
+          }
+          stdDev = Math.sqrt(sqDiffSum / count);
+          movementRatio = observeContext.movementHits / count;
+        }
+
+        var movedAgain = movementRatio >= 0.15 || avgDev >= 2.0 || stdDev >= 1.6;
+
+        if (movedAgain) {
+          addHistoryRecord('CAUTION', observeContext.peakMag);
+          setDetectionState('CAUTION', '큰 움직임이 감지되었습니다. 괜찮으신가요?');
+        } else {
+          addHistoryRecord('DANGER', observeContext.peakMag);
+          triggerDangerAlert();
+        }
+      }
+
+      // ---------- Canvas Real-Time Waveform ----------
+      function drawChart() {
+        if (!chartCanvas) return;
+        var rect = chartCanvas.getBoundingClientRect();
+        if (rect.width === 0 || rect.height === 0) return;
+
+        var dpr = window.devicePixelRatio || 1;
+        var targetW = Math.round(rect.width * dpr);
+        var targetH = Math.round(rect.height * dpr);
+
+        if (chartCanvas.width !== targetW || chartCanvas.height !== targetH) {
+          chartCanvas.width = targetW;
+          chartCanvas.height = targetH;
+        }
+
+        var ctx = chartCanvas.getContext('2d');
+        ctx.save();
+        ctx.scale(dpr, dpr);
+
+        var w = rect.width;
+        var h = rect.height;
+        var padTop = 12;
+        var padBottom = 14;
+        var plotH = h - padTop - padBottom;
+        var maxY = Math.max(45, state.settings.threshold + 10);
+
+        function yForVal(v) {
+          var clamped = Math.max(0, Math.min(maxY, v));
+          return padTop + plotH - (clamped / maxY) * plotH;
+        }
+
+        ctx.clearRect(0, 0, w, h);
+
+        // Subtle horizontal grid
+        ctx.strokeStyle = '#E8EFEA';
+        ctx.lineWidth = 1;
+        var gridMarks = [10, 20, 30, 40];
+        for (var g = 0; g < gridMarks.length; g++) {
+          if (gridMarks[g] < maxY) {
+            var gy = yForVal(gridMarks[g]);
+            ctx.beginPath();
+            ctx.moveTo(0, gy);
+            ctx.lineTo(w, gy);
+            ctx.stroke();
+          }
+        }
+
+        // Gravity 9.8 m/s² reference line
+        var yGrav = yForVal(9.8);
+        ctx.save();
+        ctx.setLineDash([4, 4]);
+        ctx.strokeStyle = '#7B948D';
+        ctx.lineWidth = 1.2;
+        ctx.beginPath();
+        ctx.moveTo(0, yGrav);
+        ctx.lineTo(w, yGrav);
+        ctx.stroke();
+        ctx.restore();
+
+        // Impact Threshold dashed line
+        var yThresh = yForVal(state.settings.threshold);
+        ctx.save();
+        ctx.setLineDash([6, 4]);
+        ctx.strokeStyle = '#C0392B';
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.moveTo(0, yThresh);
+        ctx.lineTo(w, yThresh);
+        ctx.stroke();
+        ctx.restore();
+
+        // Threshold text label inside chart
+        ctx.fillStyle = '#C0392B';
+        ctx.font = '600 11px sans-serif';
+        ctx.fillText('기준 ' + state.settings.threshold + ' m/s²', 6, Math.max(11, yThresh - 4));
+
+        // Data waveform line
+        var samples = state.graphSamples;
+        if (samples.length > 1) {
+          var strokeColor = '#1D7A5F';
+          if (state.detectionState === 'CAUTION') strokeColor = '#B7791F';
+          else if (state.detectionState === 'DANGER') strokeColor = '#C0392B';
+          else if (state.detectionState === 'IMPACT_OBSERVE') strokeColor = '#1D4ED8';
+
+          ctx.strokeStyle = strokeColor;
+          ctx.lineWidth = 2.4;
+          ctx.lineJoin = 'round';
+          ctx.lineCap = 'round';
+          ctx.beginPath();
+
+          for (var i = 0; i < samples.length; i++) {
+            var px = (i / (MAX_GRAPH_POINTS - 1)) * w;
+            var py = yForVal(samples[i].mag);
+            if (i === 0) ctx.moveTo(px, py);
+            else ctx.lineTo(px, py);
+          }
+          ctx.stroke();
+        }
+
+        ctx.restore();
+      }
+
+      // ---------- Hardware DeviceMotion Handling ----------
+      function onDeviceMotion(event) {
+        if (!state.isRunning) return;
+        var acc = event.accelerationIncludingGravity;
+        if (!acc) return;
+        if (acc.x === null && acc.y === null && acc.z === null) return;
+
+        if (!state.hasHardwareSensor) {
+          state.hasHardwareSensor = true;
+          state.testOnlyMode = false;
+          if (sensorProbeTimer) {
+            clearTimeout(sensorProbeTimer);
+            sensorProbeTimer = null;
+          }
+          noSensorBanner.classList.add('hidden');
+          modeLabel.textContent = '실시간 센서 연결됨';
+        }
+
+        // While user runs an explicit button simulation, pause live desk values so simulation stays accurate
+        if (isSimulating) return;
+
+        var x = typeof acc.x === 'number' ? acc.x : 0;
+        var y = typeof acc.y === 'number' ? acc.y : 0;
+        var z = typeof acc.z === 'number' ? acc.z : 0;
+        handleSensorSample(x, y, z);
+      }
+
+      function attachMotionListener() {
+        if (!motionListenerBound && 'DeviceMotionEvent' in window) {
+          window.addEventListener('devicemotion', onDeviceMotion);
+          motionListenerBound = true;
+        }
+      }
+
+      function detachMotionListener() {
+        if (motionListenerBound) {
+          window.removeEventListener('devicemotion', onDeviceMotion);
+          motionListenerBound = false;
+        }
+        if (sensorProbeTimer) {
+          clearTimeout(sensorProbeTimer);
+          sensorProbeTimer = null;
+        }
+      }
+
+      function acquireWakeLock() {
+        if ('wakeLock' in navigator && navigator.wakeLock && typeof navigator.wakeLock.request === 'function') {
+          navigator.wakeLock.request('screen')
+            .then(function (sentinel) {
+              wakeLockSentinel = sentinel;
+            })
+            .catch(function () {
+              // Wake Lock optional — ignore if unsupported or low battery mode
+            });
+        }
+      }
+
+      function releaseWakeLock() {
+        if (wakeLockSentinel) {
+          try {
+            wakeLockSentinel.release();
+          } catch (e) {
+            // Ignore
+          }
+          wakeLockSentinel = null;
+        }
+      }
+
+      function showNoSensorBanner(mode) {
+        if (mode === 'iframe') {
+          noSensorTitle.textContent = '미리보기 프레임(iframe) 안에서는 센서가 차단될 수 있어요';
+          noSensorDesc.innerHTML = '아이패드 Safari에서는 미리보기 창이 아닌 <strong>단독 HTTPS 탭</strong>으로 직접 열어야 실제 움직임 센서가 작동합니다. 현재 상태에서는 테스트 모드로 확인할 수 있습니다.';
+        } else if (mode === 'insecure') {
+          noSensorTitle.textContent = 'HTTPS 주소에서만 실제 센서를 사용할 수 있어요';
+          noSensorDesc.innerHTML = '아이패드·스마트폰 보안 정책상 <code>https://</code> 주소로 접속해야 가속도 센서가 작동합니다. 현재 상태에서는 테스트 모드만 사용할 수 있습니다.';
+        } else {
+          noSensorTitle.textContent = '이 기기에는 센서가 없어요';
+          noSensorDesc.innerHTML = 'PC나 가속도 센서가 없는 기기에서는 실시간 센서를 측정할 수 없어 <strong>테스트 모드</strong>만 사용할 수 있습니다. 아래 테스트 버튼을 눌러 낙상 감지 기능을 확인해 보세요.';
+        }
+        noSensorBanner.classList.remove('hidden');
+      }
+
+      function enterDashboard(options) {
+        var opts = options || {};
+        state.isRunning = true;
+        state.hasHardwareSensor = false;
+        state.testOnlyMode = Boolean(opts.testOnly);
+        state.graphSamples = [];
+        for (var i = 0; i < 20; i++) {
+          state.graphSamples.push({ mag: 9.8, state: 'NORMAL' });
+        }
+
+        startScreen.classList.add('hidden');
+        dashboardScreen.classList.remove('hidden');
+        permissionErrorBox.classList.add('hidden');
+
+        setDetectionState('NORMAL');
+        syncSettingsUI();
+        renderHistory();
+        acquireWakeLock();
+
+        var isInIframe = false;
+        try {
+          isInIframe = window.self !== window.top;
+        } catch (e) {
+          isInIframe = true;
+        }
+
+        if (opts.testOnly) {
+          showNoSensorBanner(isInIframe ? 'iframe' : (!window.isSecureContext ? 'insecure' : 'hardware'));
+          modeLabel.textContent = '테스트 모드 (센서 없음)';
+        } else {
+          noSensorBanner.classList.add('hidden');
+          modeLabel.textContent = '센서 연결 확인 중...';
+          attachMotionListener();
+
+          // Probe for 2.0s to verify whether device actually delivers acceleration data
+          sensorProbeTimer = setTimeout(function () {
+            if (state.isRunning && !state.hasHardwareSensor) {
+              state.testOnlyMode = true;
+              showNoSensorBanner(isInIframe ? 'iframe' : (!window.isSecureContext ? 'insecure' : 'hardware'));
+              modeLabel.textContent = '테스트 모드 (센서 미수신)';
+            }
+          }, 2000);
+        }
+      }
+
+      function showPermissionError(customMsg) {
+        permissionErrorBox.classList.remove('hidden');
+        if (customMsg) {
+          permissionErrorText.textContent = customMsg;
+        }
+      }
+
+      function handleStartClick() {
+        permissionErrorBox.classList.add('hidden');
+
+        var isInIframe = false;
+        try {
+          isInIframe = window.self !== window.top;
+        } catch (e) {
+          isInIframe = true;
+        }
+
+        // 1. iOS / iPadOS 13+ Explicit Permission API
+        // IMPORTANT: Call requestPermission() synchronously FIRST inside the user tap handler!
+        if (typeof DeviceMotionEvent !== 'undefined' && typeof DeviceMotionEvent.requestPermission === 'function') {
+          var permPromise;
+          try {
+            permPromise = DeviceMotionEvent.requestPermission();
+          } catch (syncErr) {
+            initAudio();
+            showPermissionError('움직임 센서 권한 요청에 실패했습니다. HTTPS 주소의 Safari 단독 탭에서 다시 시도해 주세요.');
+            return;
+          }
+
+          initAudio();
+
+          permPromise
+            .then(function (permissionState) {
+              if (permissionState === 'granted') {
+                enterDashboard({ testOnly: false });
+              } else {
+                showPermissionError(
+                  isInIframe
+                    ? '미리보기 프레임(iframe) 안에서는 아이패드 센서 권한이 거부됩니다. Safari 새 탭에서 HTTPS 주소를 직접 열어서 실행해 주세요.'
+                    : '센서 사용 권한이 허용되지 않았습니다. 아래 안내에 따라 센서 사용을 허용해 주세요.'
+                );
+              }
+            })
+            .catch(function () {
+              showPermissionError(
+                isInIframe
+                  ? '미리보기 프레임(iframe)에서는 동작 센서가 차단됩니다. Safari 새 탭에서 HTTPS 주소를 직접 열어 실행해 주세요.'
+                  : (!window.isSecureContext
+                    ? '보안 HTTPS(https://) 주소가 아니어서 동작 센서가 차단되었습니다. HTTPS 주소로 접속해 주세요.'
+                    : '센서 권한 요청이 취소되었거나 브라우저 보안 설정에 의해 차단되었습니다.')
+              );
+            });
+          return;
+        }
+
+        initAudio();
+
+        // 2. Non-iOS: Check if DeviceMotionEvent is supported at all
+        if (!('DeviceMotionEvent' in window)) {
+          enterDashboard({ testOnly: true });
+          return;
+        }
+
+        // 3. Check Chromium Permissions API if available to detect explicit sensor block
+        if (navigator.permissions && typeof navigator.permissions.query === 'function') {
+          navigator.permissions.query({ name: 'accelerometer' })
+            .then(function (permStatus) {
+              if (permStatus && permStatus.state === 'denied') {
+                showPermissionError('브라우저에서 동작 센서 권한이 차단되어 있습니다. 센서 사용을 허용해 주세요.');
+              } else {
+                enterDashboard({ testOnly: false });
+              }
+            })
+            .catch(function () {
+              // Many browsers don't expose 'accelerometer' in permissions.query — proceed directly
+              enterDashboard({ testOnly: false });
+            });
+        } else {
+          enterDashboard({ testOnly: false });
+        }
+      }
+
+      function handleStopClick() {
+        stopSimulation();
+        stopAlarmAndVibration();
+        detachMotionListener();
+        releaseWakeLock();
+
+        if (cautionResetTimer) {
+          clearTimeout(cautionResetTimer);
+          cautionResetTimer = null;
+        }
+        if (dangerCountdownTimer) {
+          clearInterval(dangerCountdownTimer);
+          dangerCountdownTimer = null;
+        }
+
+        state.isRunning = false;
+        state.hasHardwareSensor = false;
+        dangerOverlay.classList.add('hidden');
+        dashboardScreen.classList.add('hidden');
+        startScreen.classList.remove('hidden');
+      }
+
+      // ---------- Test Mode Simulations ----------
+      function stopSimulation() {
+        if (simTimer) {
+          clearInterval(simTimer);
+          simTimer = null;
+        }
+        isSimulating = false;
+        simStatus.classList.add('hidden');
+        simStatus.textContent = '';
+      }
+
+      function runFallSimulation() {
+        if (!state.isRunning) return;
+        initAudio();
+        stopSimulation();
+        if (state.detectionState === 'DANGER') {
+          dismissDangerAlert();
+        }
+        setDetectionState('NORMAL');
+
+        isSimulating = true;
+        simStatus.classList.remove('hidden');
+        simStatus.textContent = '시뮬레이션 실행 중: 넘어짐 충격 후 정지 상태 재현';
+
+        var startTs = Date.now();
+        var waitMs = state.settings.waitSeconds * 1000;
+        var impactTarget = Math.max(36, state.settings.threshold + 8);
+        var totalDuration = 650 + waitMs + 400;
+
+        simTimer = setInterval(function () {
+          var elapsed = Date.now() - startTs;
+          var x = 0, y = 0, z = 9.8;
+
+          if (elapsed < 250) {
+            // Normal standing
+            x = 0.25 + (Math.random() - 0.5) * 0.2;
+            y = 0.4 + (Math.random() - 0.5) * 0.2;
+            z = 9.78 + (Math.random() - 0.5) * 0.2;
+          } else if (elapsed < 450) {
+            // Free-fall dip
+            x = 0.6;
+            y = 0.8;
+            z = 2.1;
+          } else if (elapsed < 600) {
+            // Sharp impact spike exceeding threshold
+            var axisVal = impactTarget / Math.sqrt(3);
+            x = axisVal;
+            y = -axisVal;
+            z = axisVal;
+          } else if (elapsed < totalDuration) {
+            // Lying still on ground (total magnitude ~ 9.8 m/s²)
+            x = 9.72 + (Math.random() - 0.5) * 0.14;
+            y = 0.45 + (Math.random() - 0.5) * 0.1;
+            z = 0.55 + (Math.random() - 0.5) * 0.1;
+          } else {
+            stopSimulation();
+            return;
+          }
+
+          handleSensorSample(x, y, z);
+        }, 50);
+      }
+
+      function runShakeAndMoveSimulation() {
+        if (!state.isRunning) return;
+        initAudio();
+        stopSimulation();
+        if (state.detectionState === 'DANGER') {
+          dismissDangerAlert();
+        }
+        setDetectionState('NORMAL');
+
+        isSimulating = true;
+        simStatus.classList.remove('hidden');
+        simStatus.textContent = '시뮬레이션 실행 중: 충격 후 다시 걸어가는 움직임 재현';
+
+        var startTs = Date.now();
+        var waitMs = state.settings.waitSeconds * 1000;
+        var impactTarget = Math.max(33, state.settings.threshold + 6);
+        var totalDuration = 550 + waitMs + 500;
+
+        simTimer = setInterval(function () {
+          var elapsed = Date.now() - startTs;
+          var x = 0, y = 0, z = 9.8;
+
+          if (elapsed < 200) {
+            x = 0.2;
+            y = 0.3;
+            z = 9.8;
+          } else if (elapsed < 380) {
+            // Initial impact / shake spike
+            var axisVal = impactTarget / Math.sqrt(3);
+            x = -axisVal;
+            y = axisVal;
+            z = axisVal;
+          } else if (elapsed < totalDuration) {
+            // Continuous post-impact walking / movement oscillations
+            var t = (elapsed - 380) / 140;
+            x = Math.sin(t) * 5.2;
+            y = Math.cos(t * 1.3) * 4.5;
+            z = 9.8 + Math.sin(t * 1.7) * 4.8;
+          } else {
+            stopSimulation();
+            return;
+          }
+
+          handleSensorSample(x, y, z);
+        }, 50);
+      }
+
+      // ---------- Event Listeners ----------
+      startBtn.addEventListener('click', handleStartClick);
+      retryPermissionBtn.addEventListener('click', handleStartClick);
+      enterTestOnlyBtn.addEventListener('click', function () {
+        initAudio();
+        enterDashboard({ testOnly: true });
+      });
+
+      stopBtn.addEventListener('click', handleStopClick);
+
+      cautionAckBtn.addEventListener('click', function () {
+        stopSimulation();
+        setDetectionState('NORMAL');
+      });
+
+      imOkBtn.addEventListener('click', dismissDangerAlert);
+
+      simFallBtn.addEventListener('click', runFallSimulation);
+      simShakeBtn.addEventListener('click', runShakeAndMoveSimulation);
+
+      thresholdSlider.addEventListener('input', function () {
+        var val = parseInt(thresholdSlider.value, 10);
+        state.settings.threshold = val;
+        thresholdDisplay.textContent = val + ' m/s²';
+        chartThresholdLegend.textContent = '중력 9.8 · 충격 기준 ' + val + ' m/s²';
+        saveSettings();
+        drawChart();
+      });
+
+      waitSlider.addEventListener('input', function () {
+        var val = parseInt(waitSlider.value, 10);
+        state.settings.waitSeconds = val;
+        waitDisplay.textContent = val + '초';
+        saveSettings();
+      });
+
+      function saveGuardianPhone() {
+        var phone = guardianPhoneInput.value.trim();
+        state.settings.guardianPhone = phone;
+        saveSettings();
+        saveFeedback.textContent = phone
+          ? '보호자 번호(' + phone + ')가 저장되었습니다.'
+          : '보호자 전화번호가 비워졌습니다.';
+        setTimeout(function () {
+          saveFeedback.textContent = '';
+        }, 3000);
+      }
+
+      savePhoneBtn.addEventListener('click', saveGuardianPhone);
+      guardianPhoneInput.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          saveGuardianPhone();
+        }
+      });
+
+      clearHistoryBtn.addEventListener('click', function () {
+        state.history = [];
+        saveHistory();
+        renderHistory();
+      });
+
+      window.addEventListener('resize', function () {
+        if (state.isRunning) {
+          drawChart();
+        }
+      });
+
+      document.addEventListener('visibilitychange', function () {
+        if (document.visibilityState === 'visible' && state.isRunning) {
+          acquireWakeLock();
+        }
+      });
+
+      function checkExecutionEnvironment() {
+        var isInIframe = false;
+        try {
+          isInIframe = window.self !== window.top;
+        } catch (e) {
+          isInIframe = true;
+        }
+
+        if (isInIframe) {
+          envWarningTitle.textContent = '아이패드 센서 사용 안내 (미리보기 창 감지됨)';
+          envWarningText.textContent = '현재 화면은 미리보기 프레임(iframe) 내부입니다. 아이패드 Safari에서는 아래 버튼으로 새 탭에서 직접 열어야 실제 움직임 센서 권한 팝업이 정상 작동합니다.';
+          openStandaloneLink.setAttribute('href', window.location.href);
+          openStandaloneLink.classList.remove('hidden');
+          envWarningBox.classList.remove('hidden');
+        } else if (!window.isSecureContext) {
+          envWarningTitle.textContent = 'HTTPS 접속 필요';
+          envWarningText.textContent = '아이패드·스마트폰에서 실제 가속도 센서를 측정하려면 https:// 주소로 접속해야 합니다.';
+          openStandaloneLink.classList.add('hidden');
+          envWarningBox.classList.remove('hidden');
+        }
+      }
+
+      // Initialize persisted state on load
+      checkExecutionEnvironment();
+      loadPersistedData();
+      syncSettingsUI();
+      renderHistory();
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+{
+  "name": "낙상 알리미 (Fall Alert)",
+  "description": "스마트폰 가속도 센서로 낙상을 실시간 감지하고 보호자에게 빠르게 알리는 의료·돌봄 웹 앱",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}
